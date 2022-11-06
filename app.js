@@ -1,13 +1,14 @@
 const express = require('express')
 //const cors = require('cors')
 
+
 const app = express();
 const port = process.env.PORT || 3000
 
 app.use(express.json());
 //app.use(cors());
 
-const PORT = process.env.PORT ||3000;
+
 
 app.post('/', (req, res) => {
     const  operation_type = req.body.operation_type
@@ -30,11 +31,7 @@ app.post('/', (req, res) => {
     else if (operation_type.toLowerCase() === "subtraction") {
       result = +x - +y
     }
-    else { return res.send({
-      error: "Available operation_type are 'addition', 'multiplication', or 'subtraction' "
-    })}
-  
-    res.send({slackUsername: 'Philip-D21', result, operation_type })
+  res.send({slackUsername: 'Philip-D21', result, operation_type })
   })
   
   app.listen(port, () => {
